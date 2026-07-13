@@ -1,6 +1,6 @@
 # Módulo de Terraform para Cómputo AWS (EC2)
 
-Repositorio destinado al desarrollo del Módulo de Cómputo para la Evaluación Parcial N° 2 de la asignatura **AUY1105 - Infraestructura como Código II**.
+Repositorio destinado al desarrollo del Módulo de Cómputo para la **Evaluación Final Transversal** de la asignatura **AUY1105 - Infraestructura como Código II**.
 
 ## Objetivos del Repositorio
 El propósito principal de este repositorio es proporcionar un módulo desacoplado y reutilizable para el despliegue seguro y estandarizado de instancias de cómputo (EC2) en Amazon Web Services (AWS), preparado para integrarse de forma fluida con módulos de red externos.
@@ -34,7 +34,11 @@ Este módulo depende de recursos de red previamente creados. Puede ser invocado 
 
 ```hcl
 module "computo" {
-  source            = "[github.com/Ignaciov1/terraform-aws-ec2-AUY1105-grupo-3](https://github.com/Ignaciov1/terraform-aws-ec2-AUY1105-grupo-3)"
+  source            = "git::[https://github.com/Ignaciov1/eft-terraform-modulo-computo.git?ref=v1.0.0](https://github.com/Ignaciov1/eft-terraform-modulo-computo.git?ref=v1.0.0)"
   subnet_id         = module.redes.public_subnet_1_id
-  security_group_id = module.redes.security_group_ssh_id
+  security_group_id = module.redes.id_sg_ssh
 }
+```
+
+## 📂 Ejemplos de Uso
+En la carpeta `examples/` de este repositorio encontrarás implementaciones de referencia y guías detalladas para aprovisionar este módulo de cómputo en entornos de prueba, inyectando las dependencias de red necesarias.
